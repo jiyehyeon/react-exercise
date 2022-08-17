@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
+import Form from "./components/Form";
 import List from "./components/List";
 
 export default function App() {
@@ -16,10 +17,6 @@ export default function App() {
     },
   ]);
   const [value, setValue] = useState("");
-
-  const handleChange = (e) => {
-    setValue(e.target.value);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -42,23 +39,7 @@ export default function App() {
         </div>
 
         <List todoData={todoData} setTodoData={setTodoData} />
-
-        <form style={{ display: "flex " }} onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="value"
-            style={{ flex: "10", padding: "5px" }}
-            placeholder="해야 할 일을 입력하세요."
-            value={value}
-            onChange={handleChange}
-          />
-          <input
-            type="submit"
-            value="입력"
-            className="btn"
-            style={{ flex: "1" }}
-          />
-        </form>
+        <Form handleSubmit={handleSubmit} value={value} setValue={setValue} />
       </div>
     </div>
   );
